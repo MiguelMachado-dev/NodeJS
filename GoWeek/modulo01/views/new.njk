@@ -1,1 +1,11 @@
 <h1>Novo usuário</h1>
+<!-- method get deixa os parametros na url
+enquanto o post nao, o que é mais aconselhado -->
+<form action="/create" method="POST">
+<!-- name do input tem que ser igual a variavel utilizada
+para gerar as LIs -->
+  <input name="user" />
+  <button type="submit">Salvar</button>
+</form>
+
+<a href="/">Listagem de usuários</a>
