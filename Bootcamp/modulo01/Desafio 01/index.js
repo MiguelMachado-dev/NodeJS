@@ -19,6 +19,7 @@ const checkAge = (req, res, next) => {
   const { age } = req.query
   // foi quebrado o req.query.age pois o campo retorna um "objeto", então
   // sendo passado {age} é pego mais fácil o conteúdo
+  // Foi usado desestruturação, assim, conseguimos passar o age por var no POST
 
   // Checa se o campo está preenchido, senão redireciona para pagina inicial
   if (!age) {
