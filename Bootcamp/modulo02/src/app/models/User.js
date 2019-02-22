@@ -24,5 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   )
 
+  User.prototype.checkPassword = function (password) {
+    // compara a senha digitada no formulario de login
+    // com a hash salva no banco de dados
+    return bcrypt.compare(password, this.password_hash)
+  }
+
   return User
 }
