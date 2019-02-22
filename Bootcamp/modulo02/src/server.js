@@ -32,7 +32,11 @@ class App {
       express: this.express,
       autoescape: true
     })
-
+    // Arquivos da pasta 'public' podem ser acessadas com o /
+    // pois não foi passado como primeiro argumento um outro nome para a pasta
+    // this.express.use('arquivos', express.static( path.resolve(__dirname, 'public') ))
+    // neste caso o css estaria em localhost:3000/arquivos/styles.css
+    this.express.use(express.static(path.resolve(__dirname, 'public')))
     this.express.set('view engine', 'njk')
   }
 
