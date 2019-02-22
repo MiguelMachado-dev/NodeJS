@@ -26,6 +26,8 @@ class SessionController {
 
     // se ele logar, salvaremos uma nova informação na sessão
     // chamada de user com a informação do usuario
+    // até aqui, console.log(req.session) não retornara objeto com nome de user
+    // apos essa atribuição abaixo, criará um obj de nome user com as infos do user
     req.session.user = user
     // Após fazer todas as verificações de email e senha
     // e der tudo certo, redireciona o usuario para:
