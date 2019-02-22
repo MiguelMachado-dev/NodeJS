@@ -24,6 +24,9 @@ class SessionController {
       return res.redirect('/')
     }
 
+    // se ele logar, salvaremos uma nova informação na sessão
+    // chamada de user com a informação do usuario
+    req.session.user = user
     // Após fazer todas as verificações de email e senha
     // e der tudo certo, redireciona o usuario para:
     return res.redirect('/app/dashboard')
