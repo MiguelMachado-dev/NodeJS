@@ -31,7 +31,7 @@ class App {
         store: new FileStore({
           path: path.resolve(__dirname, '..', 'tmp', 'sessions')
         }),
-        saveUninitialized: true
+        saveUninitialized: true // Serve para já criar uma sessão, porém sem os dados de user, obvio xD
       })
     )
   }
