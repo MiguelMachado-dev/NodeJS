@@ -1,0 +1,8 @@
+{% extends "_layouts/default.njk" %}
+
+{% block body %}
+  <!-- em SessionController.js criamos uma session obj com nome de
+  user  Aqui, estamos resgatando a informação dentro se user.name -->
+  <h1>Olá, {{ user.name }}</h1>
+  <a href="/app/logout">Sair</a>
+{% endblock %}
