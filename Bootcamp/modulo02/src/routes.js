@@ -3,6 +3,7 @@ const routes = express.Router()
 const UserController = require('./app/controllers/UserController')
 const SessionController = require('./app/controllers/SessionController')
 const DashboardController = require('./app/controllers/DashboardController')
+const FileController = require('./app/controllers/FileController')
 const multerConfig = require('./config/multer')
 const upload = require('multer')(multerConfig)
 
@@ -16,6 +17,10 @@ routes.use((req, res, next) => {
 
   return next()
 })
+
+// rota genérica para todo tipo de arquivo que está dentro da pasta /uploads/
+// será possível visualizar ele          metodo show
+routes.get('/files/:file', FileController.show)
 
 // rota chamada quando o usuario solicita o /
 routes.get('/', guestMiddleware, SessionController.create)
