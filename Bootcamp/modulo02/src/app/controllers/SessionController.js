@@ -33,5 +33,15 @@ class SessionController {
     // e der tudo certo, redireciona o usuario para:
     return res.redirect('/app/dashboard')
   }
+
+  destroy (req, res) {
+    // destroy é o método que vai destruir a sessão
+    req.session.destroy(() => {
+      // em server.js passamos que o nome da sessão é root, então é ele que
+      // precisamos destruir. Remove os dados do usuário do arquivo json da sessão
+      res.clearCookie('root')
+      return res.redirect('/')
+    })
+  }
 }
 module.exports = new SessionController()
