@@ -21,6 +21,9 @@ routes.post('/signup', upload.single('avatar'), UserController.store)
 // usuário só conseguirá acessar a rota /app/* quando estiver logado
 routes.use('/app', authMiddleware)
 
+// Rota chamada quando usuário clica em logout
+routes.get('/app/logout', SessionController.destroy)
+
 // rota obtida quando o usuario solicita /app/dashboard
 // que retorna o template dashboard
 routes.get('/app/dashboard', (req, res) => {
