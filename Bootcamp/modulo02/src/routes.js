@@ -9,6 +9,13 @@ const upload = require('multer')(multerConfig)
 const authMiddleware = require('./app/middlewares/auth')
 const guestMiddleware = require('./app/middlewares/guest')
 
+routes.use((req, res, next) => {
+  res.locals.flashSuccess = req.flash('success')
+  res.locals.flashError = req.flash('error')
+
+  return next()
+})
+
 // rota chamada quando o usuario solicita o /
 routes.get('/', guestMiddleware, SessionController.create)
 routes.post('/signin', SessionController.store)
