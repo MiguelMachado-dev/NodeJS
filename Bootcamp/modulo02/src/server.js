@@ -3,6 +3,7 @@ const session = require('express-session')
 const FileStore = require('session-file-store')(session)
 const nunjucks = require('nunjucks')
 const path = require('path')
+const flash = require('connect-flash')
 
 class App {
   // Constructor executa automaticamente na nova instancia da classe
@@ -22,6 +23,7 @@ class App {
   middlewares () {
     // Utilizando middleware para utilizar o POST, lidar com formulários
     this.express.use(express.urlencoded({ extended: false }))
+    this.express.use(flash())
     this.express.use(
       session({
         // criptografa a sessao
