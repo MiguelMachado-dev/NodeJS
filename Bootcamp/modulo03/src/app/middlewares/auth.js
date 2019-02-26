@@ -1,0 +1,26 @@
+const jwt = require('jsonwebtoken')
+const authConfig = require('../../config/auth')
+const { promisify } = require('util')
+
+module.exports = async (req, res, next) => {
+  const authHeader = req.header.authorization
+
+  if (!authHeader) {
+    return res.status(401).json({ error: 'Token not provided' })
+  }
+
+  const [, token] = authHeader.split(' ')
+
+  try {
+    const decoded = await promisify(jwt.verify)(token, authConfig.secret)
+
+    // adicionando dentro do req uma var com nome Id com o decoded.id
+    // todo middleware, toda rota que for usar o req daqui pra frente
+    // saberá qual o id do usuario que está fazendo a requisição
+    req.userId = decoded.id
+
+    return next()
+  } catch (err) {
+    return res.status(401).json({ error: 'Invalid Token' })
+  }
+}
