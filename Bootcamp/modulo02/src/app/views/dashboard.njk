@@ -13,7 +13,8 @@
             <img src="/files/{{ provider.avatar }}"/>
             <strong>{{ provider.name }}</strong>
           </div>
-          <a href="">+</a>
+          <!-- provider.id fará agendamento com um provider específico -->
+          <a href="/app/appointments/new/{{ provider.id }}">+</a>
         </li>
       {% endfor %}
     </ul>
