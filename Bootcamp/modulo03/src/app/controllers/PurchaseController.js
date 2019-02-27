@@ -14,7 +14,7 @@ class PurchaseController {
       ad: purchaseAd,
       user,
       content
-    }).save()
+    }).save() // Salvando o job no nosso redis para ele executar a fila
 
     return res.send()
   }
