@@ -25,4 +25,8 @@ routes.put('/ads/:id', controllers.AdController.update)
 // .delete para quando queremos deletar alguma coisa ¯\_(ツ)_/¯
 routes.delete('/ads/:id', controllers.AdController.destroy)
 
+/**
+ * PURCHASES
+ */
+routes.post('/purchases', controllers.PurchaseController.store)
 module.exports = routes
