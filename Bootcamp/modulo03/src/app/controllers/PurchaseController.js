@@ -13,7 +13,7 @@ class PurchaseController {
       from: '"Miguel Machado" <miiguellmp@gmail.com>',
       to: purchaseAd.author.email,
       subject: `Solicitação de compra: ${purchaseAd.title}`,
-      templete: 'purchase',
+      template: 'purchase',
       context: { user, content, ad: purchaseAd }
     })
 
