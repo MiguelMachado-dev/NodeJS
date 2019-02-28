@@ -1,23 +1,24 @@
 const express = require('express')
 const validate = require('express-validation')
+const handle = require('express-async-handler')
 
 const routes = express.Router()
 
 const authMiddleware = require('./app/middlewares/auth')
 
-// Chamando todos os Controllers sem precisar chamar um a um
+// Chamando todos os handle(Controllers sem precisar chamar um a um)
 const controllers = require('./app/controllers')
 const validators = require('./app/validators')
 
 routes.post(
   '/users',
   validate(validators.User),
-  controllers.UserController.store
+  handle(controllers.UserController.store)
 )
 routes.post(
   '/sessions',
   validate(validators.Session),
-  controllers.SessionController.store
+  handle(controllers.SessionController.store)
 )
 
 // Todas as rotas daqui para baixo esteja configurada para não aceitar se o user
@@ -27,13 +28,21 @@ routes.use(authMiddleware)
 /**
  * ADS
  */
-routes.get('/ads', controllers.AdController.index)
-routes.get('/ads/:id', controllers.AdController.show)
-routes.post('/ads', validate(validators.Ad), controllers.AdController.store)
+routes.get('/ads', handle(controllers.AdController.index))
+routes.get('/ads/:id', handle(controllers.AdController.show))
+routes.post(
+  '/ads',
+  validate(validators.Ad),
+  handle(controllers.AdController.store)
+)
 // .put utiliza quando queremos atualizar alguma coisa
-routes.put('/ads/:id', validate(validators.Ad), controllers.AdController.update)
+routes.put(
+  '/ads/:id',
+  validate(validators.Ad),
+  handle(controllers.AdController.update)
+)
 // .delete para quando queremos deletar alguma coisa ¯\_(ツ)_/¯
-routes.delete('/ads/:id', controllers.AdController.destroy)
+routes.delete('/ads/:id', handle(controllers.AdController.destroy))
 
 /**
  * PURCHASES
@@ -41,6 +50,6 @@ routes.delete('/ads/:id', controllers.AdController.destroy)
 routes.post(
   '/purchases',
   validate(validators.Purchase),
-  controllers.PurchaseController.store
+  handle(controllers.PurchaseController.store)
 )
 module.exports = routes
