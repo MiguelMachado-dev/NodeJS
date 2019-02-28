@@ -8,3 +8,9 @@
 
 Utilizamos o Redis para executar alguns jobs em background em fila, assim, o user
 não precisa "esperar" a requisição ser feita.
+
+### Sentry.io
+
+Sentry.io para dar track em erros no app em modo de produção em tempo
+real
+https://sentry.io/
