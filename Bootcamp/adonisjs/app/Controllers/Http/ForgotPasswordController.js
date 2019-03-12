@@ -2,6 +2,7 @@
 
 const crypto = require('crypto')
 const User = use('App/Models/User')
+const Mail = use('Mail')
 
 class ForgotPasswordController {
   async store ({ request, response }) {
@@ -14,7 +15,7 @@ class ForgotPasswordController {
 
       await user.save()
 
-      await MediaList.send(
+      await Mail.send(
         ['emails.forgot_password', 'emails.forgot_password-text'],
         {
           email,
