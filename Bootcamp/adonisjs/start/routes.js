@@ -10,4 +10,11 @@ Route.post('passwords', 'ForgotPasswordController.store')
 Route.put('passwords', 'ForgotPasswordController.update')
 
 Route.get('/files/:id', 'FileController.show')
-Route.post('/files', 'FileController.store')
+
+// Fazendo verificações em rotas que o usuário precisa estar logado
+Route.group(() => {
+  Route.post('/files', 'FileController.store')
+
+  // Passando todos metodos de CRUD em apenas uma linha
+  Route.resource('projects', 'ProjectController').apiOnly()
+}).middleware(['auth'])
