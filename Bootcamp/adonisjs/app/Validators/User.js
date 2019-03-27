@@ -1,9 +1,10 @@
 'use strict'
 
 class User {
-  get ValidateAll () {
+  get validateAll () {
     return true
   }
+
   get rules () {
     return {
       // validation rules
