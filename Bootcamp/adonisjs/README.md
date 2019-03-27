@@ -28,4 +28,18 @@ adonis migration:run
 
 #### Create Database Docker
 
+```js
+docker run --name database -p 5432:5432 -d -t kartoza/postgis
+```
+
+docker start database
+
 ##### Create postgres database
+
+After installed postgres, restart pc
+
+Create new Server
+username: docker
+password: docker
+
+Be aware: **First start docker then open pgAdmin**
