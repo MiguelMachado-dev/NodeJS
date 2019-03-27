@@ -17,4 +17,5 @@ Route.group(() => {
 
   // Passando todos metodos de CRUD em apenas uma linha
   Route.resource('projects', 'ProjectController').apiOnly()
+  Route.resource('projects.tasks', 'TaskController').apiOnly()
 }).middleware(['auth'])

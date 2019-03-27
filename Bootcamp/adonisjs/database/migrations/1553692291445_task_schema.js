@@ -10,11 +10,11 @@ class TaskSchema extends Schema {
       table
         .integer('project_id')
         .unsigned()
+        .notNullable()
         .references('id')
-        .inTable('users')
+        .inTable('projects')
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
-        .notNullable()
       table
         .integer('user_id')
         .unsigned()
@@ -26,7 +26,7 @@ class TaskSchema extends Schema {
         .integer('file_id')
         .unsigned()
         .references('id')
-        .inTable('users')
+        .inTable('files')
         .onUpdate('CASCADE')
         .onDelete('SET NULL')
       table.string('title').notNullable()
